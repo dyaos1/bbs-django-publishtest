@@ -23,7 +23,9 @@ class User(AbstractBaseUser):
     username = models.CharField(max_length=32)
 
     objects = UserManager()
-    is_active = models.BooleanField(default=True)
+#    is_active = models.BooleanField(default=True)
+
+    joined_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'username'
 
@@ -34,3 +36,10 @@ class Article(models.Model):
     author =  models.ForeignKey(User, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Photo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    photo_path = models.TextField(default = "default.png")
