@@ -33,4 +33,15 @@ class Article(models.Model):
     content =  models.CharField(max_length=32)
     author =  models.ForeignKey(User, on_delete=models.CASCADE)
 
+<<<<<<< Updated upstream
     created_at = models.DateTimeField(auto_now_add=True)
+=======
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Photo(models.Model):
+    user = models.OneToOneField(User)
+
+    photo_path = models.TextField(default = "default.png")
+>>>>>>> Stashed changes
