@@ -1,15 +1,13 @@
-<<<<<<< Updated upstream
 from django.shortcuts import render
 
 # Create your views here.
-=======
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import User, Article
+from app.models import User, Article, Photo
 from rest_framework import viewsets, permissions
 from rest_framework.parsers import JSONParser
-from app.serializers import UserSerializer, ArticleSerializer
+from app.serializers import UserSerializer, ArticleSerializer, PhotoSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -28,6 +26,11 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all().order_by('-created_at')
     serializer_class = ArticleSerializer
     # permission_classes = [permissions.IsAuthenticated]
+    
+
+class PhotoViewSet(viewsets.ModelViewSet):
+    queryset = Photo.objects.all().order_by('user_id')
+    serializer_class = PhotoSerializer
 
 
 # def TestView(req):
@@ -60,4 +63,3 @@ def article_detail(request, pk):
     elif request.method == 'DELETE':
         article.delete()
         return HttpResponse(status=204)
->>>>>>> Stashed changes

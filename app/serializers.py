@@ -1,4 +1,4 @@
-from app.models import User, Article
+from app.models import User, Article, Photo
 from rest_framework import serializers
 
 
@@ -16,3 +16,8 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
+class PhotoSerializer(serializers.HyperlinkedModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Photo
+        fields = '__all__'
