@@ -21,8 +21,8 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     class Meta:
         model = Article
-        # fields = ['title', 'content', 'author', 'created_at', 'updated_at']
-        fields = '__all__'
+        fields = ['id', 'url', 'title', 'content', 'author', 'created_at', 'updated_at']
+        # fields = '__all__'
 
     # def create(self, validated_data):
     #     """
