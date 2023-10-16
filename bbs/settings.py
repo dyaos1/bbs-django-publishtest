@@ -100,10 +100,21 @@ DATABASES = {
         'HOST': 'database-2.c5y6knxkdqsr.ap-northeast-2.rds.amazonaws.com',
         'PORT': '5432',
         'NAME': 'sera',
-        'USER': 'postgres',
-        'PASSWORD': 'sera7788*',
+        'USER': 'testuser',
+        'PASSWORD': '1234',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': 'database-2.c5y6knxkdqsr.ap-northeast-2.rds.amazonaws.com',
+#         'PORT': '5432',
+#         'NAME': 'sera',
+#         'USER': 'postgres',
+#         'PASSWORD': 'sera7788*',
+#     }
+# }
 
 
 # Password validation
