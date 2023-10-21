@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 class UserManager(BaseUserManager):    
    use_in_migrations = True
 
-   def create_user(self, username, password):        
+   def create_user(self, username, password, **kwargs):        
        if not username:            
            raise ValueError('must have username')
        if not password:            
@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
        user.save(using=self._db)
        return user
    
-   def create_superuser(self, username, password):
+   def create_superuser(self, username, password, **extra_fields):
        user = self.create_user(            
            username=username,                  
            password=password

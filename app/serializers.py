@@ -14,7 +14,15 @@ class UserSerializer(serializers.ModelSerializer):
     # article = serializers.PrimaryKeyRelatedField(many=True, queryset=Article.objects.all())
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'password'] # 혹시 노출되는거 아닌가 싶어서 password를 뺐더니 validate_data에서 빠지는 문제가 생겼음
+
+    def create(self, validated_data):
+        print(validated_data)
+        user = User.objects.create_user(
+            username = validated_data['username'],
+            password = validated_data['password']
+        )
+        return user
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
